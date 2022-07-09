@@ -27,7 +27,7 @@ export default class LinkedList {
     this.length++
 
   }
-  // return the data of element at index position
+  // return the data of node at index position
   getData(index) {
     // limit the index between 0 ~ this.length - 1
     if(index > this.length - 1 || index < 0){
@@ -35,7 +35,7 @@ export default class LinkedList {
     }
     let currentNode = this.head
     let count = 0
-    // find the element is the index of linkedlist
+    // find the node is the index of linkedlist
     while(count < index ){
       count++
       currentNode = currentNode.next
@@ -53,10 +53,10 @@ export default class LinkedList {
     // traversal the linkedList
     while(currentNode) {
       if(currentNode.val === val){
-        // when element.val equals the val then break the loop
+        // when node.val equals the val then break the loop
         break;
       }
-      // record the element's current position
+      // record the node's current position
       index ++
       currentNode = currentNode.next
     }
@@ -67,24 +67,24 @@ export default class LinkedList {
   insert(index, val) {
     // create node
     const node = new Node(val)
-    // if index is greater than the LinedList' size just appen the node into the last element
+    // if index is greater than the LinedList' size just appen the node into the last node
     if(index > this.length - 1) {
       this.append(val)
       return
     }
-    // if the index < 0 append node into the first element
+    // if the index < 0 append node into the first node
     if( index <= 0) {
       this.prepend(val)
       return
     }
     let currentNode = this.head
     let count = 0
-    // find element that index is between 1 - this.length - 1
+    // find target node's previous node
     while(count < index - 1) {
       count++
       currentNode = currentNode.next
     }
-    // save the element to which currentNode.next point
+    // save the node to which currentNode.next point
     let tempNode = currentNode.next
     // let the new node next point to currentNode.next node
     node.next = tempNode
@@ -120,7 +120,7 @@ export default class LinkedList {
     if(index === 0) {
       // save the head val
       const val = this.head.val
-      // let the head point to the head.next element, the result is same as removing current element
+      // let the head point to the head.next node, the result is same as removing current node
       this.head = this.head.next
       this.length--
       return val
@@ -128,12 +128,12 @@ export default class LinkedList {
 
     let previousNode = this.head
     let count = 0
-    // find the previous element is the index of linkedlist
+    // find the previous node is the index of linkedlist
     while(count < index - 1 ){
       count++
       previousNode = previousNode.next
     }
-    // remove the target element
+    // remove the target node
     let currentNode = previousNode.next
     previousNode.next = currentNode.next
     // dont forget decrease the length
@@ -144,7 +144,7 @@ export default class LinkedList {
   // reverse the linkedList
   reverse() {
 
-    // if the linkedlist is null or just has one element
+    // if the linkedlist is null or just has one node
     if(!this.head || this.length === 1) {
       return this.head
     } else {
@@ -154,18 +154,18 @@ export default class LinkedList {
       firstNode.next = null
       // secondNode is the last node
       while(secondNode.next) {
-        // save the element that directed by secondNode
+        // save the node that directed by secondNode
         let tempNode = secondNode.next
         // reverse the direction between firstNode and secondNode
         secondNode.next = firstNode
-        // let second element becomes the firstNode , so we can change the direction one by one
+        // let second node becomes the firstNode , so we can change the direction one by one
         firstNode = secondNode
-        // let secondNode.next element becomes the second element
+        // let secondNode.next node becomes the second node
         secondNode = tempNode
       }
       // dont forget let the secondNode ponit the firstNode
       secondNode.next = firstNode
-      // at the last head node is the  secondNode also is the last element in the origin Linkedlist
+      // at the last head node is the  secondNode also is the last node in the origin Linkedlist
       this.head = secondNode
       return this
     }
@@ -197,9 +197,9 @@ export default class LinkedList {
     }
     let currentNode = this.head
     let count = 0
-    // traversal the linkedList, find the target element
+    // traversal the linkedList, find the target node
     while(count < index) {
-      // record the element's current position
+      // record the node's current position
       count ++
       currentNode = currentNode.next
     }
