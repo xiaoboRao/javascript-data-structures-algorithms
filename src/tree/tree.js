@@ -153,8 +153,43 @@ class BinarySearchTree {
     // not find same val node ,then return null
     return null
   }
+  // root -> left child -> right child
+  preorderTraversal() {
+    const result = []
+    this.preorderTraversalNode(this.root, result)
+    return result
+  }
+  preorderTraversalNode(node, result) {
+    if(!node) return result
+    result.push(node.val)
+    this.preorderTraversalNode(node.left, result)
+    this.preorderTraversalNode(node.right, result)
+  }
 
-
+  // left child -> root -> right child
+  inorderTraversal() {
+    const result = []
+    this.inorderTraversalNode(this.root, result)
+    return result
+  }
+  inorderTraversalNode(node, result) {
+    if(!node) return result
+    this.inorderTraversalNode(node.left, result)
+    result.push(node.val)
+    this.inorderTraversalNode(node.right, result)
+  }
+  // left child -> right child -> root
+  postorderTraversal() {
+    const result = []
+    this.postorderTraversalNode(this.root, result)
+    return result
+  }
+  postorderTraversalNode(node, result) {
+    if(!node) return result
+    this.postorderTraversalNode(node.left, result)
+    this.postorderTraversalNode(node.right, result)
+    result.push(node.val)
+  }
 }
 
 export default BinarySearchTree
