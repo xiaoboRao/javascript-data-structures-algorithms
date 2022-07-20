@@ -9,26 +9,26 @@ class Set {
   }
 
   add(value) {
-    if (this.has(value)) return false;
-    this.items[value] = value;
-    return true;
+    if (this.has(value)) return false
+    this.items[value] = value
+    return true
   }
 
   remove(value) {
-    if (!this.has(value)) return false;
-    delete this.items[value];
+    if (!this.has(value)) return false
+    delete this.items[value]
   }
 
   clear() {
-    this.items = {};
+    this.items = {}
   }
 
   size() {
-    return Object.keys(this.items).length;
+    return Object.keys(this.items).length
   }
 
   values() {
-    return Object.keys(this.items);
+    return Object.keys(this.items)
   }
 
   union(otherSet) {
@@ -48,10 +48,10 @@ class Set {
 
   intersection(otherSet) {
 
-    const intersectionSet = new Set();
+    const intersectionSet = new Set()
     // traverse the otherSet, find the element in both sets
-    otherSet.values((item) => {
-      if(this.has(item)) {
+    this.values((item) => {
+      if (otherSet.has(item)) {
         intersectionSet.add(item)
       }
     })
@@ -61,24 +61,23 @@ class Set {
 
   difference(otherSet) {
 
-    const differenceSet = new Set();
+    const differenceSet = new Set()
     // if the element of current set is not included by otherSet, then add into differenceSet
     this.values().forEach((item) => {
-      if(!otherSet.has(item)) {
+      if (!otherSet.has(item)) {
         differenceSet.add(item)
       }
     })
+    return differenceSet
   }
 
   subset(otherSet) {
-    // there is one element of current set is not inclued by otherSet, then return false
-    this.values().forEach((item) => {
-      if(!otherSet.has(item)) {
-        return false
-      }
+    // find whether one item is not inclued by otherSet, if meet the condition, return true
+    const result = this.values().some((item) => {
+      return !otherSet.has(item)
     })
-
-    return false
+    // but we need the opposite result
+    return !result
   }
 }
 

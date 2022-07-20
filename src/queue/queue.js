@@ -2,10 +2,10 @@ class Queue {
   constructor() {
     this.items = []
   }
-  enque(item) {
+  enqueue(item) {
     this.items.push(item)
   }
-  deque() {
+  dequeue() {
     return this.items.shift() || ''
   }
   front() {
@@ -15,7 +15,7 @@ class Queue {
     return this.items.length === 0
   }
   size() {
-    return this.items.length 
+    return this.items.length
   }
   toString() {
     let result = ''
